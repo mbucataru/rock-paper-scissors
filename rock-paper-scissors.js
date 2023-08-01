@@ -1,6 +1,6 @@
 function getComputerChoice()
 {
-    let random = Math.random() * 100;
+    const random = Math.random() * 100;
     if (random < 33)
     {
         return "Scissors";
@@ -15,65 +15,68 @@ function getComputerChoice()
     }
 }
 
-function playRound(playerSelection, computerSelection)
+function playRound(e)
 {
-    playerSelection = playerSelection.toUpperCase();
-    computerSelection = computerSelection.toUpperCase();
+    const div = document.querySelector("div");
+    const newContent = document.createElement("div");
+    playerSelection = this.classList.value.toUpperCase();
+    computerSelection = getComputerChoice().toUpperCase();
     if (playerSelection == "ROCK")
     {
         if (computerSelection == "ROCK")
         {
-            return "Tied! You both picked rock!";
+            newContent.textContent = "Tied! You both picked rock!";
+            div.appendChild(newContent);
         }
         else if (computerSelection == "SCISSORS")
         {
-            return "You win! Rock beats scissors!";
+            newContent.textContent = "You win! Rock beats scissors!";
+            div.appendChild(newContent);
         }
         else
         {
-            return "You lose! Paper beats rock!";
+            newContent.textContent = "You lose! Paper beats rock!";
+            div.appendChild(newContent);
         }
     }
     else if (playerSelection == "SCISSORS")
     {
         if (computerSelection == "ROCK")
         {
-            return "You lose! Rock beats scissors";
+            newContent.textContent = "You lose! Rock beats scissors";
+            div.appendChild(newContent);
         }
         else if (computerSelection == "SCISSORS")
         {
-            return "Tied! You both picked scissors!";
+            newContent.textContent= "Tied! You both picked scissors!";
+            div.appendChild(newContent);
         }
         else
         {
-            return "You win! Scissors beats paper!";
+            newContent.textContent = "You win! Scissors beats paper!";
         } 
     }
     else if (playerSelection == "PAPER")
     {
         if (computerSelection == "ROCK")
         {
-            return "You win! Paper beats rock!";
+            newContent.textContent = "You win! Paper beats rock!";
+            div.appendChild(newContent);
         }
         else if (computerSelection == "SCISSORS")
         {
-            return "You lose! Scissors beats paper!";
+            newContent.textContent = "You lose! Scissors beats paper!";
+            div.appendChild(newContent);
         }
         else
         {
-            return "Tied! You both picked paper!";
+            newContent.textContent = "Tied! You both picked paper!";
+            div.appendChild(newContent);
         }  
     }
-    return "Invalid player input";
 }
 
-function game()
-{
-    let playerInput = prompt("Enter your choice");
-    console.log(playRound(playerInput, getComputerChoice()));
-}
+const buttons = document.querySelectorAll("button");
 
-for (let i = 0; i < 5; i++)
-{
-    game();
-}
+
+buttons.forEach(button => button.addEventListener('click', playRound));
