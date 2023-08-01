@@ -1,6 +1,7 @@
 const score = document.querySelector(".score");
 let playerScore = 0;
 let computerScore = 0;
+let winCheck = 0;
 score.textContent = `${playerScore} - ${computerScore}`;
 function getComputerChoice()
 {
@@ -85,7 +86,18 @@ function playRound(e)
             div.appendChild(newContent);
         }  
     }
-    score.textContent = `${playerScore} - ${computerScore}`;
+    if (playerScore >= 5 && winCheck == 0)
+    {
+        score.textContent = "You win!";
+        winCheck = 1;
+    }
+    else if (computerScore >= 5 && winCheck == 0)
+    {
+        score.textContent = "Computer wins!";
+        winCheck = 1;
+    }
+    else if (winCheck == 0)
+        score.textContent = `${playerScore} - ${computerScore}`;
 }
 
 const buttons = document.querySelectorAll("button");
