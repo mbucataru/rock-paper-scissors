@@ -1,8 +1,11 @@
 const score = document.querySelector(".score");
+
 let playerScore = 0;
 let computerScore = 0;
 let winCheck = 0;
+
 score.textContent = `${playerScore} - ${computerScore}`;
+
 function getComputerChoice()
 {
     const random = Math.random() * 100;
